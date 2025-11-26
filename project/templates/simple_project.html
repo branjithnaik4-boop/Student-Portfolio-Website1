@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Banavath Ranjit Naik — Python Full-Stack Developer</title>
+  <meta name="description" content="Portfolio — Banavath Ranjit Naik, Python Full-Stack Developer (Hyderabad)" />
+  <style>
+    /* ====== Variables & Reset ====== */
+    :root{
+      --bg:#081124;
+      --card:#0d1b2a;
+      --glass: rgba(255,255,255,0.03);
+      --muted: rgba(230,238,248,0.85);
+      --accent1:#7c3aed;
+      --accent2:#06b6d4;
+      --accent3:#f97316;
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(2,6,23,0.6);
+    }
+    [data-theme="light"]{
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --glass: rgba(2,6,23,0.04);
+      --muted: #0b1220;
+      --shadow: 0 8px 20px rgba(2,6,23,0.06);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: Inter, Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 400px at 10% 10%, rgba(124,58,237,0.06), transparent),
+                  radial-gradient(800px 300px at 90% 90%, rgba(6,182,212,0.04), transparent),
+                  var(--bg);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+      transition: background .35s, color .35s;
+    }
+
+    .wrap{max-width:1100px;margin:0 auto}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:64px;height:64px;border-radius:16px;
+      background:conic-gradient(from 180deg at 50% 50%, var(--accent1),var(--accent2),var(--accent3));
+      display:grid;place-items:center;font-weight:800;color:#02111b;box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.04)
+    }
+    h1{font-size:18px;margin-bottom:2px}
+    p.subtitle{font-size:13px;color:rgba(255,255,255,0.75)}
+
+    .controls{display:flex;gap:8px;align-items:center}
+    .icon-btn{
+      display:inline-grid;place-items:center;width:42px;height:42px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
+      background:transparent;cursor:pointer;font-weight:700;color:var(--muted)
+    }
+
+    /* ====== Layout ====== */
+    .hero{display:grid;grid-template-columns: 1fr 340px;gap:22px;margin-top:20px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.03)}
+
+    /* Intro */
+    .intro h2{font-size:28px;margin-bottom:8px}
+    .intro p{color:rgba(230,238,248,0.9);line-height:1.5}
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{padding:7px 12px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:700;border:1px solid rgba(255,255,255,0.03);font-size:13px}
+
+    .cta{display:flex;gap:10px;margin-top:16px}
+    .btn{
+      padding:10px 14px;border-radius:12px;border:0;font-weight:800;cursor:pointer;
+    }
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#02111b}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    /* Projects grid */
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+    .project{padding:14px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+    .project h4{margin-bottom:8px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.03);font-weight:700;font-size:13px}
+
+    /* Profile card */
+    .profile{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+    .avatar{
+      width:140px;height:140px;border-radius:20px;overflow:hidden;border:3px solid var(--accent2);
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));display:grid;place-items:center;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .socials{display:flex;gap:10px;margin-top:8px}
+    .social{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);text-decoration:none;color:var(--muted);font-weight:700}
+
+    /* timeline / experience */
+    .timeline{margin-top:12px}
+    .item{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+    .dot{width:12px;height:12px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));flex:0 0 12px}
+
+    footer{margin-top:28px;text-align:center;color:rgba(255,255,255,0.6);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .projects{grid-template-columns:1fr}
+    }
+
+    /* ====== Animations ====== */
+    .fade-in{animation:fadeIn .6s ease both}
+    .pop{animation:pop .45s cubic-bezier(.2,.9,.3,1) both}
+    .slide-up{animation:slideUp .6s cubic-bezier(.2,.9,.3,1) both}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes pop{0%{transform:scale(.96);opacity:0}100%{transform:scale(1);opacity:1}}
+    @keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+    /* small util */
+    a.download{display:inline-block;text-decoration:none}
+    code.path{background:rgba(255,255,255,0.03);padding:4px 8px;border-radius:6px;font-size:12px}
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">BR</div>
+        <div>
+          <h1>Banavath Ranjit Naik</h1>
+          <p class="subtitle">Python Full-Stack Developer • Hyderabad, India</p>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="themeToggle" class="icon-btn" title="Toggle dark / light" aria-label="Toggle theme">🌗</button>
+        <a id="downloadCV" class="icon-btn" href="C:\Users\HP 745 G6\Desktop\RANJIT_RESUME.pdf" download title="Download CV" aria-label="Download CV">⬇</a>
+      </div>
+    </header>
+
+    <main class="hero" style="margin-top:22px">
+      <!-- LEFT: Intro + Projects -->
+      <section class="card intro fade-in">
+        <h2 class="slide-up">Hi — I'm <span style="background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;color:transparent;font-weight:900">Banavath Ranjit Naik</span></h2>
+        <p class="slide-up" style="margin-top:10px">I build scalable backends, APIs, chat-bots and clean responsive frontends. I enjoy combining Python + modern JS to deliver full-stack applications with good UX.</p>
+
+        <div class="chips slide-up" style="margin-top:14px">
+          <div class="chip">Python</div>
+          <div class="chip">Django/Flask</div>
+          <div class="chip">HTML & CSS</div>
+          <div class="chip">JavaScript</div>
+          <div class="chip">React</div>
+          <div class="chip">REST APIs</div>
+          <div class="chip">MySQL</div>
+        </div>
+
+        <div class="cta slide-up" style="margin-top:16px">
+          <!-- Download uses your local path -->
+          <a class="download" href="C:\Users\HP 745 G6\Desktop\RANJIT_RESUME.pdf" download>
+            <button class="btn btn-primary">Download CV</button>
+          </a>
+          <button class="btn btn-outline" id="seeProjects">See projects</button>
+        </div>
+
+        <!-- Projects -->
+        <div class="projects slide-up" id="projects">
+          <article class="project pop">
+            <h4>Doctor Appointment Chat-bot</h4>
+            <p>AI-powered conversational assistant for scheduling appointments and pharmacy orders. Built backend APIs and conversational flows.</p>
+            <div class="tags" style="margin-top:10px"><span class="tag">NLP</span><span class="tag">Node.js</span><span class="tag">React</span></div>
+          </article>
+
+          <article class="project pop">
+            <h4>Real-time Voice Cloning</h4>
+            <p>Research & demo using GANs and PyTorch for voice cloning and synthesis, focusing on low-latency inference.</p>
+            <div class="tags" style="margin-top:10px"><span class="tag">PyTorch</span><span class="tag">GANs</span><span class="tag">Audio</span></div>
+          </article>
+
+          <article class="project pop">
+            <h4>Student Portfolio Website</h4>
+            <p>Responsive single-page site to showcase projects, skills and resume — built with HTML/CSS/JS.</p>
+            <div class="tags" style="margin-top:10px"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          </article>
+
+          <article class="project pop">
+            <h4>Weather Condition App</h4>
+            <p>Real-time weather app using external weather APIs to display temperature, condition, humidity and icons.</p>
+            <div class="tags" style="margin-top:10px"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">Frontend</span></div>
+          </article>
+        </div>
+
+        <!-- Experience / timeline -->
+        <div class="timeline" style="margin-top:18px">
+          <div class="item">
+            <div class="dot"></div>
+            <div>
+              <strong>Frontend Intern</strong>
+              <div style="color:rgba(255,255,255,0.65);font-size:13px">XYZ Company — Jun 2024 to Dec 2024</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="dot"></div>
+            <div>
+              <strong>Open-source contributor</strong>
+              <div style="color:rgba(255,255,255,0.65);font-size:13px">Various projects — Ongoing</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Profile -->
+      <aside class="card profile fade-in">
+        <div class="avatar" aria-hidden="false" title="Profile photo">
+          <!-- Local image path -->
+          <img src="C:\Users\HP 745 G6\Downloads\Ranjit_pic.jpg" alt="Banavath Ranjit Naik">
+        </div>
+
+        <div style="font-weight:800;font-size:18px;margin-top:6px">Banavath Ranjit Naik</div>
+        <div style="color:rgba(255,255,255,0.65);font-size:13px">Hyderabad, India</div>
+
+        <div style="margin-top:10px;font-size:14px">
+          <div>Email: <a href="mailto:branjithnaik4@gmail.com" style="color:var(--accent2);font-weight:700;text-decoration:none">branjithnaik4@gmail.com</a></div>
+          <div style="margin-top:6px">Contact: <strong>9704501183</strong></div>
+        </div>
+
+        <div class="socials" style="margin-top:12px">
+          <!-- Instagram (inline SVG) -->
+          <a class="social" href="https://www.instagram.com/__ranjith__roy__99/" target="_blank" title="Instagram" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.2"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M17.5 6.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+          </a>
+
+          <!-- LinkedIn (inline SVG) -->
+          <a class="social" href="https://www.linkedin.com/in/branjitnaik/" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.98 3.5a2.5 2.5 0 11-.002 5.002A2.5 2.5 0 014.98 3.5z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 9h5.96V21H2z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9.5 9h5.72v1.67h.08c.8-1.52 2.75-3.12 5.65-3.12 6.05 0 7.17 3.98 7.17 9.16V21H20.04v-6.02c0-1.44-.03-3.28-2-3.28-2 0-2.3 1.56-2.3 3.17V21H9.5z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div style="margin-top:14px;width:100%">
+          <div style="text-align:left;font-weight:800;margin-bottom:8px">Quick Links</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a class="download" href="C:\Users\HP 745 G6\Desktop\RANJIT_RESUME.pdf" download style="text-decoration:none">
+              <button class="btn btn-primary" style="width:100%">Download Resume</button>
+            </a>
+            <a href="https://www.instagram.com/__ranjith__roy__99/" target="_blank" style="text-decoration:none">
+              <button class="btn btn-outline" style="width:100%">Instagram</button>
+            </a>
+            <a href="https://www.linkedin.com/in/branjitnaik/" target="_blank" style="text-decoration:none">
+              <button class="btn btn-outline" style="width:100%">LinkedIn</button>
+            </a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> • Designed & built by <strong>Banavath Ranjit Naik</strong></div>
+      <div style="margin-top:6px;font-size:12px;color:rgba(255,255,255,0.45)">Local files used: <code class="path">C:\Users\HP 745 G6\Downloads\Ranjit_pic.jpg</code> • <code class="path">C:\Users\HP 745 G6\Desktop\RANJIT_RESUME.pdf</code></div>
+    </footer>
+  </div>
+
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (persists in localStorage)
+    const body = document.body;
+    const toggle = document.getElementById('themeToggle');
+    const LS_KEY = 'ranjit_theme';
+    function applyTheme(theme){
+      if(theme === 'light'){
+        body.setAttribute('data-theme','light');
+        toggle.textContent = '🌞';
+      } else {
+        body.setAttribute('data-theme','dark');
+        toggle.textContent = '🌗';
+      }
+    }
+    const saved = localStorage.getItem(LS_KEY) || 'dark';
+    applyTheme(saved);
+    toggle.addEventListener('click', () => {
+      const current = body.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      const next = current === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      localStorage.setItem(LS_KEY, next);
+    });
+
+    // Smooth scroll to projects
+    document.getElementById('seeProjects').addEventListener('click', () => {
+      document.getElementById('projects').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    // small accessibility: keyboard for 'See projects'
+    document.getElementById('seeProjects').addEventListener('keypress', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+    });
+
+    // Note: When opened from an HTTP server, some browsers may block  links.
+    // If the resume or image don't appear after deploying online, upload them to your server and update the paths.
+  </script>
+</body>
+</html>
